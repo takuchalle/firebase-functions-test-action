@@ -1,8 +1,7 @@
-# Container image that runs your code
-FROM alpine:3.10
+FROM node:stretch-slim
 
-# Copies your code file from your action repository to the filesystem path `/` of the container
+RUN npm install -g firebase-tools firebase-functions-test mocha ts-node
+
 COPY entrypoint.sh /entrypoint.sh
 
-# Code file to execute when the docker container starts up (`entrypoint.sh`)
 ENTRYPOINT ["/entrypoint.sh"]
